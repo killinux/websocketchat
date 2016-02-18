@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.sql.*,java.util.*,net.sf.json.JSONArray,com.hao.object.User" contentType="text/html; charset=utf-8" %>
+<%@ page language="java" import="java.io.*java.sql.*,java.util.*,net.sf.json.JSONArray,com.hao.object.User" contentType="text/html; charset=utf-8" %>
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="no-js lt-ie9"> </html><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
@@ -54,6 +54,7 @@
 <%//=request.getSession().getAttribute("user_id")%>	
 <%
 //create table users(id int primary key,name varchar(30),img_url varchar(50),other varchar(60)) ENGINE=MyISAM AUTO_INCREMENT=1826 DEFAULT CHARSET=utf-8 ROW_FORMAT=DYNAMIC;
+
 String RL = "jdbc:mysql://192.168.137.11:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
 
 
@@ -64,7 +65,7 @@ if("null".equals(uid) ){
 //String sqlStr = "select * from users where id in (select fid from friend where uid='"+uid+"');";
 String sqlStr = "select * from users where id in (select fid from friend where uid='"+1+"');";
 try {
-	Class.forName("com.mysql.jdbc.Driver");
+	Class.forName("com.mysql.jdbc.Driver");//
 	Connection con = DriverManager.getConnection(RL);
 	Statement st = con.createStatement();
 	ResultSet rs = st.executeQuery(sqlStr);

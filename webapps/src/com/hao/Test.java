@@ -1,6 +1,9 @@
 package com.hao;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import net.sf.json.JSONArray;
 
@@ -16,6 +20,21 @@ import com.hao.object.User;
 public class Test {
 
 	public static void main(String[] args) {
+		 Properties pro = new Properties();  
+		 String realpath ="D:/c/apache-tomcat-7.0.62/webapps/ROOT//WEB-INF/classes";// request.getRealPath("/WEB-INF/classes");  
+		 try{  
+		 //读取配置文件
+		 FileInputStream in = new FileInputStream(realpath+"/config.properties");  
+		 pro.load(in);  
+		 }  
+		 catch(FileNotFoundException e){  
+		     System.out.println(e);  
+		 }  
+		 catch(IOException e){System.out.println(e);} 
+
+		//通过key获取配置文件
+		String path = pro.getProperty("mysql_url"); 
+		System.out.println(path);
 		String abc=null+"";
 		System.out.println(abc);
 		/*String RL = "jdbc:mysql://192.168.137.11:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
