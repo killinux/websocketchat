@@ -1,6 +1,7 @@
 #mysql -uroot --default-character-set=utf8 -h192.168.137.11 -p
 #GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY 'haoning';
 #FLUSH PRIVILEGES;
+#create database haochat;
 create table users(id int primary key auto_increment ,username varchar(30) UNIQUE   ,nickname varchar(30) UNIQUE   ,img_url varchar(50),other varchar(60),passwd varchar(30),onlinekey int) ENGINE=MyISAM AUTO_INCREMENT=1826 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 insert into users(id,username,nickname,img_url,other,passwd,onlinekey) values('1','haoba','好吧','00.jpg','我觉得可以啊吧！下次有机会我...','123',1);
 insert into users(id,username,nickname,img_url,other,passwd,onlinekey) values('2','mashengxi','麻生希','0.jpg','我觉得可以啊吧！下次有机会我...','123',1);
