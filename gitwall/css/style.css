@@ -1,0 +1,73 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+}
+
+h1 {
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 3rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	color: #fff;
+	text-shadow: 0 0 1rem #000;
+	text-align: center;
+	padding: 1rem 0;
+	animation-name: title_anim;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	z-index: 50;
+}
+
+@keyframes title_anim {
+	from  {
+		text-shadow: 0 0 1rem #f00;
+		color: #f00;
+	}
+	50% {
+		text-shadow: 0 0 1rem #0f0;
+		color: #0f0;
+	}
+	to {
+		text-shadow: 0 0 1rem #00f;
+		color: #00f;
+	}
+}
+
+h1 a {
+	color: inherit;
+	font-size: 1rem;
+	vertical-align: super;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	line-height: 1;
+}
+
+main video {
+	z-index: 100;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+main #mosaic {
+	flex: auto;
+	z-index: 1;
+}
+
+#mosaic img {
+	vertical-align: bottom;
+}

@@ -62,7 +62,8 @@ if("null".equals(uid) ){
 	response.sendRedirect("login.jsp");
 }
 //String sqlStr = "select * from users where id in (select fid from friend where uid='"+uid+"');";
-String sqlStr = "select * from users where id in (select fid from friend where uid='"+1+"');";
+//String sqlStr = "select * from users where id in (select fid from friend where uid='"+1+"');";
+String sqlStr = "select * from users u,friend f where f.uid="+1+" and u.id=f.fid";
 try {
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection con = DriverManager.getConnection(RL);
@@ -102,8 +103,7 @@ try {
 <%
 		users.add(user);
 	}
-	JSONArray jsonArray = JSONArray.fromObject( users );  
-    //out.println( jsonArray );  
+	JSONArray jsonArray = JSONArray.fromObject( users );    
 	rs.close();
 	st.close();
 	con.close();

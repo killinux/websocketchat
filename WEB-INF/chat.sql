@@ -19,3 +19,4 @@ insert into friend values(1,2);
 insert into friend values(1,3);
 insert into friend values(1,4);
 insert into friend values(1,5);
+insert into friend values(2,1);
