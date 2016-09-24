@@ -25,6 +25,7 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 
 	protected StreamInbound createWebSocketInbound(String subProtocol,
 			HttpServletRequest arg1) {
+		System.out.println("hello world websocket");
 		return new MyMessageInbound();
 	}
 	public int getUserCount(){
@@ -96,7 +97,7 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 			/*Socket socket;
 			String msg = "";
 			try {
-				// Ïò·þÎñÆ÷ÀûÓÃSocket·¢ËÍÐÅÏ¢
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Socketï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 				socket = new Socket("192.168.0.102", 5000);
 				// socket = new Socket("127.0.0.1",5000);
 				PrintWriter output = new PrintWriter(socket.getOutputStream());
@@ -104,12 +105,12 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 				output.write(message.toString());
 				output.flush();
 
-				// ÕâÀïÊÇ½ÓÊÕµ½ServerµÄÐÅÏ¢
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½Õµï¿½Serverï¿½ï¿½ï¿½ï¿½Ï¢
 				DataInputStream input = new DataInputStream(
 						socket.getInputStream());
 				byte[] b = new byte[1024];
 				input.read(b);
-				// Server·µ»ØµÄÐÅÏ¢
+				// Serverï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
 				msg = new String(b).trim();
 
 				output.close();
@@ -120,7 +121,7 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			// Íùä¯ÀÀÆ÷·¢ËÍÐÅÏ¢
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			CharBuffer cb = CharBuffer.wrap(new StringBuilder(msg));
 			getWsOutbound().writeTextMessage(cb);*/
 		}
@@ -131,7 +132,7 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 		String message = "haoning";
 		String msg = "";
 		try {
-			// Ïò·þÎñÆ÷ÀûÓÃSocket·¢ËÍÐÅÏ¢
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Socketï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			socket = new Socket("192.168.0.102", 5000);
 			// socket = new Socket("127.0.0.1",5000);
 			PrintWriter output = new PrintWriter(socket.getOutputStream());
@@ -139,11 +140,11 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 			output.write(message.toString());
 			output.flush();
 
-			// ÕâÀïÊÇ½ÓÊÕµ½ServerµÄÐÅÏ¢
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½Õµï¿½Serverï¿½ï¿½ï¿½ï¿½Ï¢
 			DataInputStream input = new DataInputStream(socket.getInputStream());
 			byte[] b = new byte[1024];
 			input.read(b);
-			// Server·µ»ØµÄÐÅÏ¢
+			// Serverï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
 			msg = new String(b).trim();
 
 			output.close();

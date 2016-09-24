@@ -37,7 +37,7 @@ public class Test {
 //		System.out.println(path);
 //		String abc=null+"";
 //		System.out.println(abc);
-		String RL = "jdbc:mysql://192.168.137.11:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
+		String RL = "jdbc:mysql://192.168.0.110:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
 		String u="aaa";//request.getParameter("u");
 		String p="bb";//request.getParameter("p");
 		String sqlStr = "insert into users(username,img_url,passwd,other) values('"+u+"','00.jpg','"+p+"','我觉得可以啊！下次有机会我...')";

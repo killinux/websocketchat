@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.sql.*,java.util.*,net.sf.json.JSONArray,com.hao.object.User" contentType="text/html; charset=GBK" %>
 <%
-//mysql -uroot --default-character-set=utf8 -h192.168.137.11 -p
+//mysql -uroot --default-character-set=utf8 -h192.168.0.110 -p
 /*
 create table users(id int primary key auto_increment ,username varchar(30) UNIQUE   ,nickname varchar(30) UNIQUE   ,img_url varchar(50),other varchar(60),passwd varchar(30)) ENGINE=MyISAM AUTO_INCREMENT=1826 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 insert into users(id,username,nickname,img_url,other,passwd) values('1','haoba','好吧','00.jpg','我觉得可以啊吧！下次有机会我...','123');
@@ -11,7 +11,7 @@ insert into users(id,username,nickname,img_url,other,passwd) values('5','hahaha'
 insert into users(id,username,nickname,img_url,other,passwd) values('6','yoyoyo','哟哟哟','00.jpg','我觉得可以啊！下次有机会我...','123');
 insert into users(id,username,nickname,img_url,other,passwd) values('7','yyy','哟哟哟','00.jpg','我觉得可以啊！下次有机会我...','123');
 */
-String RL = "jdbc:mysql://192.168.137.11:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
+String RL = "jdbc:mysql://192.168.0.110:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
 String uid=request.getParameter("uid");
 String sqlStr = "select * from users where id in (select fid from friend where uid='"+uid+"');";
 try {
