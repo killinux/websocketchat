@@ -63,7 +63,7 @@ public class SameWebSocketServlet extends WebSocketServlet {
 				//System.out.println(entry.getKey() + "-----");
 				String socketroom=entry.getKey().split("::")[0];
 				String socketkey=entry.getKey().split("::")[1];
-				if(this.room.equals(socketroom)&&!this.mykey.equals(socketkey)){//向room相同但是不是当前websocket发送消息
+				if(this.room.equals(socketroom)&&!this.mykey.equals(socketkey)){
 					System.out.println("-------->" + message.toString());
 					System.out.println("--->socketroom:"+socketroom+",socketkey:"+socketkey);
 					MyMessageInbound mmib = (MyMessageInbound) entry.getValue();
