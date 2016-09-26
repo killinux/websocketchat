@@ -97,7 +97,6 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 			/*Socket socket;
 			String msg = "";
 			try {
-				// �����������Socket������Ϣ
 				socket = new Socket("192.168.0.102", 5000);
 				// socket = new Socket("127.0.0.1",5000);
 				PrintWriter output = new PrintWriter(socket.getOutputStream());
@@ -105,12 +104,10 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 				output.write(message.toString());
 				output.flush();
 
-				// �����ǽ��յ�Server����Ϣ
 				DataInputStream input = new DataInputStream(
 						socket.getInputStream());
 				byte[] b = new byte[1024];
 				input.read(b);
-				// Server���ص���Ϣ
 				msg = new String(b).trim();
 
 				output.close();
@@ -121,7 +118,6 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			// �������������Ϣ
 			CharBuffer cb = CharBuffer.wrap(new StringBuilder(msg));
 			getWsOutbound().writeTextMessage(cb);*/
 		}
@@ -132,7 +128,6 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 		String message = "haoning";
 		String msg = "";
 		try {
-			// �����������Socket������Ϣ
 			socket = new Socket("192.168.0.102", 5000);
 			// socket = new Socket("127.0.0.1",5000);
 			PrintWriter output = new PrintWriter(socket.getOutputStream());
@@ -140,11 +135,9 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 			output.write(message.toString());
 			output.flush();
 
-			// �����ǽ��յ�Server����Ϣ
 			DataInputStream input = new DataInputStream(socket.getInputStream());
 			byte[] b = new byte[1024];
 			input.read(b);
-			// Server���ص���Ϣ
 			msg = new String(b).trim();
 
 			output.close();
