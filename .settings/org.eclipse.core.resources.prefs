@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//WEB-INF/src/com/hao/HelloWorldWebSocketServlet.java=GBK
+encoding//chat/msg.jsp=UTF-8
+encoding//chat/msgface.jsp=UTF-8
 encoding/<project>=UTF-8
