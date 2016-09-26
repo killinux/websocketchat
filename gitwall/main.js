@@ -1,5 +1,5 @@
 function init() {
-
+	return_value="";
 	var main = document.querySelector('main');
 	var mosaicContainer = document.getElementById('mosaic');
 	var videoWidth= 0, videoHeight = 0;
@@ -44,6 +44,7 @@ function init() {
 	}
 
 	function onFrameCaptured(pictureData) {
+		return_value=pictureData;
 		console.log("---onFrameCaptured");
 		var img = document.createElement('img');
 		img.src = pictureData;
@@ -91,6 +92,7 @@ function init() {
 		videoElement.style.height = imageHeight;
 	
 	}
+	return return_value;
 
 }
 

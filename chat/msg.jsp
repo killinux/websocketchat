@@ -57,9 +57,9 @@ String.prototype.startWith=function(s){
 }
 function startServer() {
 	console.log(navigator.userAgent);
-	var url ="wss://192.168.0.110:8443/hao/msg";
+	var url ="wss://192.168.8.61:8443/hao/msg";
 	//if https ,websocket is wss
-	//var url ="ws://192.168.0.110:8443/hao/msg";
+	//var url ="ws://192.168.8.61:8443/hao/msg";
 	if ('WebSocket' in window) {
 		ws = new WebSocket(url);
 	} else if ('MozWebSocket' in window) {

@@ -54,7 +54,7 @@
 <%//=request.getSession().getAttribute("user_id")%>	
 <%
 //create table users(id int primary key,name varchar(30),img_url varchar(50),other varchar(60)) ENGINE=MyISAM AUTO_INCREMENT=1826 DEFAULT CHARSET=utf-8 ROW_FORMAT=DYNAMIC;
-String RL = "jdbc:mysql://192.168.0.110:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
+String RL = "jdbc:mysql://192.168.8.61:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
 
 
 String uid=request.getSession().getAttribute("user_id")+"";//request.getParameter("uid");//

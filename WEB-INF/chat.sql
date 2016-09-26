@@ -1,4 +1,4 @@
-#mysql -uroot --default-character-set=utf8 -h192.168.0.110 -p
+#mysql -uroot --default-character-set=utf8 -h192.168.8.61 -p
 #GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY 'haoning';
 #FLUSH PRIVILEGES;
 #create database haochat;
