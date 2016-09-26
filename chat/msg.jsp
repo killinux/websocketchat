@@ -27,6 +27,11 @@ ul li {
 }
 </style>
 <script src="js/jquery-1.11.0.min.js"></script>
+
+<script src="libs/gumhelper.js" defer></script>
+<script src="libs/Animated_GIF.js" defer></script>
+<script src="videoShooter.js" defer></script>
+
 <%
 String uid=request.getParameter("uid");
 String mid=request.getParameter("mid");
@@ -65,7 +70,7 @@ function startServer() {
 	} else if ('MozWebSocket' in window) {
 		ws = new MozWebSocket(url);
 	} else {
-		log('浏览器不支持');
+		log('浏览器不支持websocket');
 		return;
 	}
 	ws.onopen = function() {
@@ -97,6 +102,7 @@ function sendMessage() {
 	var mytext = document.getElementById("input-pj-text").value;
 	
 	if (ws != null && mytext != "") {
+		
 		ws.send(myname+","+yourname+","+mytext);
 	}
 	document.getElementById("input-pj-text").value="";
