@@ -28,9 +28,9 @@ ul li {
 </style>
 <script src="js/jquery-1.11.0.min.js"></script>
 
-<script src="libs/gumhelper.js" defer></script>
-<script src="libs/Animated_GIF.js" defer></script>
-<script src="videoShooter.js" defer></script>
+<script src="../gitwall/libs/gumhelper.js" type="text/javascript"></script>
+<script src="../gitwall/libs/Animated_GIF.js" type="text/javascript"></script>
+<script src="../gitwall/videoShooter.js" type="text/javascript"></script>
 
 <%
 String uid=request.getParameter("uid");
@@ -110,6 +110,97 @@ function sendMessage() {
 function stopconn() {
 	ws.close();
 }
+function send_picture() {
+	var main = document.querySelector('main');
+	var mosaicContainer = document.getElementById('mosaic');
+	var videoWidth= 0, videoHeight = 0;
+	var videoElement;
+	var shooter;
+	var imagesPerRow = 5;
+	var maxImages = 5;
+
+	window.addEventListener('resize', onResize);
+
+	GumHelper.startVideoStreaming(function(error, stream, videoEl, width, height) {
+		if(error) {
+			alert('Cannot open the camera. Sad times: ' + error.message);
+			return;
+		}
+
+		videoElement = videoEl;
+		videoElement.width = width / 4;
+		videoElement.height = height / 4;
+		videoElement.style.display="none";
+		videoWidth = width;
+		videoHeight = height;
+
+		main.appendChild(videoElement);
+
+		shooter = new VideoShooter(videoElement);
+
+		onResize();
+
+		startCapturing();
+
+	});
+	function startCapturing() {
+		
+		shooter.getShot(onFrameCaptured, 10, 0.2, function onProgress(progress) {
+			// Not doing anything in the callback,
+		});
+
+	}
+	function onFrameCaptured(pictureData) {
+		console.log("---onFrameCaptured");
+		var img = document.createElement('img');
+		img.src = pictureData;
+		var imageSize = getImageSize();
+
+		img.style.width = imageSize[0] + 'px';
+		img.style.height = imageSize[1] + 'px';
+
+		mosaicContainer.insertBefore(img, mosaicContainer.firstChild);
+
+		if(mosaicContainer.childElementCount > maxImages) {
+			mosaicContainer.removeChild(mosaicContainer.lastChild);	
+		}
+
+	}
+
+	function getImageSize() {
+		var windowWidth = window.innerWidth;
+		var imageWidth = Math.round(windowWidth / imagesPerRow);
+		var imageHeight = (imageWidth / videoWidth) * videoHeight;
+
+		return [ imageWidth, imageHeight ];
+	}
+
+	function onResize(e) {
+
+		// Don't do anything until we have a video element from which to derive sizes
+		if(!videoElement) {
+			return;
+		}
+		
+		var imageSize = getImageSize();
+		var imageWidth = imageSize[0] + 'px';
+		var imageHeight = imageSize[1] + 'px';
+
+		for(var i = 0; i < mosaicContainer.childElementCount; i++) {
+			var img = mosaicContainer.children[i];
+			img.style.width = imageWidth;
+			img.style.height = imageHeight;
+		}
+
+		videoElement.style.width = imageWidth;
+		videoElement.style.height = imageHeight;
+	
+	}
+
+}
+
+
+
 </script>
 </head>
 <body onload="startServer()" style=" background:#E6E6E6; margin:0; padding:0; padding-bottom:55px; ">
@@ -131,12 +222,20 @@ function stopconn() {
 <div class="col-xs-9" style="padding:0px; margin:0; padding-left:8px; padding-right:0px">
 	<input id="input-pj-text" name="pj_text" class="form-control input-lg"  required="required"    style="border-radius:3px;height:40px; border:none; border-bottom:#E6E6E6 1px solid; font-size:18px"><!-- onBlur="javascript:$('#st-footer-bar').show();$('#wyh').show();$('#pjtext').hide();"  -->
 </div>
+<div id="mosaic"></div>
+
 
 <div class="col-xs-2" style="padding:0; margin:0; line-height:35px">
-	<a onclick="sendMessage()" class="btn btn-lg btn-primary" style="border-color:#999999;  border-radius:2px;border-width:0px; opacity:1; height:35px; width:83%; padding:7px; background:#33CC33;" id="doPingjia">
+	<a onclick="sendMessage()"  class="btn btn-lg btn-primary" style="border-color:#999999;  border-radius:2px;border-width:0px; opacity:1; height:35px; width:83%; padding:7px; background:#33CC33;" id="doPingjia">
 		<span style="color:#FFFFFF; font-size:15PX;" >发送</span>
 	</a>
 </div>
+<div class="col-xs-2" style="padding:0; margin:0; line-height:35px">
+	<a onclick="send_picture()"  class="btn btn-lg btn-primary" style="border-color:#999999;  border-radius:2px;border-width:0px; opacity:1; height:35px; width:83%; padding:7px; background:#33CC33;" id="doPingjia">
+		<span style="color:#FFFFFF; font-size:15PX;" >发送picture</span>
+	</a>
+</div>
+
 
 </form>
 </div>
