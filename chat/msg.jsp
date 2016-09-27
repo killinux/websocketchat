@@ -45,7 +45,7 @@ String mid=request.getParameter("mid");
 
 var ws = null;
 var myname ='<%=mid%>';//'<%//=request.getSession().getAttribute("username")%>';//getQueryString("uid");// "haohao";
-console.log("uid:"+myname);
+console.log("mid:"+myname);
 var yourname = '<%=uid%>';//"zhy";//"<%=uid%>";//"zhy";
 console.log("toUser:"+yourname);
 function log(text) {
@@ -61,7 +61,7 @@ String.prototype.startWith=function(s){
 	return true;
 }
 function startServer() {
-	console.log(navigator.userAgent);
+	console.log("enviroment:"+navigator.userAgent);
 	var url ="wss://192.168.8.61:8443/hao/msg";
 	//if https ,websocket is wss
 	//var url ="ws://192.168.8.61:8443/hao/msg";
@@ -74,22 +74,30 @@ function startServer() {
 		return;
 	}
 	ws.onopen = function() {
-		log('hoho，连上了');
+		log('hoho，on websocket open');
 	};
 	ws.onmessage = function(event) {
 		var thisdata = event.data;
-		log(thisdata+"   "+myname);
+		//log("thisdata:"+thisdata+"   "+myname);
 		if(thisdata.startWith("open")){
 		//	document.getElementById("username").value=thisdata.split(" ")[1];
 		}else{
-			var showData=event.data.split(",");
-			log(showData[0]+"说:"+showData[2]);
+			var showData=event.data.split("#");
+			log(showData[0]+" say:"+showData[2]);
 			if(showData[1]==yourname){
-				console.log("右边");
-				$("#content").append("<div><ul class='ul_talk reply'><li class='tbox' ><div><span class='head' style=''><img src='img/"+myname+".jpg'></span></div><div><span class='arrow'><svg><path d='M0 10 L20 19 L21 12 L20 14 L0 20 Z' stroke-width='1' stroke='#7EBE2A' fill='#7EBE2A'></path></svg></span></div><div><article class='content'  style='border-radius:5px;box-shadow:  -1px 4px 2px -3px #999999; '>"+showData[2]+"</article></div></li></ul></div>");  
+				console.log("right");
+				if(showData[3]==undefined||""==showData[3]){
+					$("#content").append("<div><ul class='ul_talk reply'><li class='tbox' ><div><span class='head' style=''><img src='img/"+myname+".jpg'></span></div><div><span class='arrow'><svg><path d='M0 10 L20 19 L21 12 L20 14 L0 20 Z' stroke-width='1' stroke='#7EBE2A' fill='#7EBE2A'></path></svg></span></div><div><article class='content'  style='border-radius:5px;box-shadow:  -1px 4px 2px -3px #999999; '>"+showData[2]+"</article></div></li></ul></div>"); 
+				}else{ 
+					$("#content").append("<div><ul class='ul_talk reply'><li class='tbox' ><div><span class='head' style=''><img src='"+showData[3]+"'></span></div><div><span class='arrow'><svg><path d='M0 10 L20 19 L21 12 L20 14 L0 20 Z' stroke-width='1' stroke='#7EBE2A' fill='#7EBE2A'></path></svg></span></div><div><article class='content'  style='border-radius:5px;box-shadow:  -1px 4px 2px -3px #999999; '>"+showData[2]+"</article></div></li></ul></div>");  
+				}
 			}else{
-				console.log("左边");
+				console.log("left");
+				if(showData[3]==undefined||""==showData[3]){
 				$("#content").append("<div><ul class='ul_talk' style='padding:0; margin:0'><li class='tbox' ><div><span class='head'><img src='img/"+yourname+".jpg'></span></div><div><span class='arrow'><svg><path d='M50 0 L5 19 L4 20 L5 21 L50 40 Z' stroke-width='1' stroke='#FFFFFF' fill='#FFFFFF'></path></svg></span></div><div><article class='content' style='border-radius:5px;box-shadow: -1px 4px 2px -3px #999999; margin-bottom: 0px;'>"+showData[2]+"</article></div></li></ul></div>");
+				}else{ 
+				$("#content").append("<div><ul class='ul_talk' style='padding:0; margin:0'><li class='tbox' ><div><span class='head'><img src='"+showData[3]+"'></span></div><div><span class='arrow'><svg><path d='M50 0 L5 19 L4 20 L5 21 L50 40 Z' stroke-width='1' stroke='#FFFFFF' fill='#FFFFFF'></path></svg></span></div><div><article class='content' style='border-radius:5px;box-shadow: -1px 4px 2px -3px #999999; margin-bottom: 0px;'>"+showData[2]+"</article></div></li></ul></div>");
+				}
 			}
 		}
 		
@@ -118,55 +126,51 @@ function send_picture() {
 	var shooter;
 	var imagesPerRow = 5;
 	var maxImages = 5;
-
 	window.addEventListener('resize', onResize);
-
 	GumHelper.startVideoStreaming(function(error, stream, videoEl, width, height) {
 		if(error) {
-			alert('Cannot open the camera. Sad times: ' + error.message);
+			console.log('error: Cannot open the camera. Sad times: ' + error.message);
+			//no video send message
+			var mytext = document.getElementById("input-pj-text").value;
+		        if (ws != null && mytext != "") {
+                        	ws.send(myname+"#"+yourname+"#"+mytext);
+                	}
+			document.getElementById("input-pj-text").value="";
 			return;
 		}
-
 		videoElement = videoEl;
 		videoElement.width = width / 4;
 		videoElement.height = height / 4;
 		videoElement.style.display="none";
 		videoWidth = width;
 		videoHeight = height;
-
 		main.appendChild(videoElement);
-
 		shooter = new VideoShooter(videoElement);
-
 		onResize();
-
 		startCapturing();
 
 	});
 	function startCapturing() {
-		
 		shooter.getShot(onFrameCaptured, 10, 0.2, function onProgress(progress) {
 			// Not doing anything in the callback,
 		});
-
 	}
 	function onFrameCaptured(pictureData) {
-		console.log("---onFrameCaptured");
+		var mytext = document.getElementById("input-pj-text").value;
+	        if (ws != null && mytext != "") {
+	                ws.send(myname+"#"+yourname+"#"+mytext+"#"+pictureData);
+	        }
+	        document.getElementById("input-pj-text").value="";
 		var img = document.createElement('img');
 		img.src = pictureData;
 		var imageSize = getImageSize();
-
 		img.style.width = imageSize[0] + 'px';
 		img.style.height = imageSize[1] + 'px';
-
 		mosaicContainer.insertBefore(img, mosaicContainer.firstChild);
-
 		if(mosaicContainer.childElementCount > maxImages) {
 			mosaicContainer.removeChild(mosaicContainer.lastChild);	
 		}
-
 	}
-
 	function getImageSize() {
 		var windowWidth = window.innerWidth;
 		var imageWidth = Math.round(windowWidth / imagesPerRow);
@@ -174,38 +178,32 @@ function send_picture() {
 
 		return [ imageWidth, imageHeight ];
 	}
-
 	function onResize(e) {
-
 		// Don't do anything until we have a video element from which to derive sizes
 		if(!videoElement) {
 			return;
 		}
-		
 		var imageSize = getImageSize();
 		var imageWidth = imageSize[0] + 'px';
 		var imageHeight = imageSize[1] + 'px';
-
 		for(var i = 0; i < mosaicContainer.childElementCount; i++) {
 			var img = mosaicContainer.children[i];
 			img.style.width = imageWidth;
 			img.style.height = imageHeight;
 		}
-
 		videoElement.style.width = imageWidth;
 		videoElement.style.height = imageHeight;
-	
 	}
 
 }
-
-
-
 </script>
 </head>
 <body onload="startServer()" style=" background:#E6E6E6; margin:0; padding:0; padding-bottom:55px; ">
 <div  id="page-container" style=" margin:0px; padding:0px; background:none; padding-top:0px; padding-bottom:0px">
 <div id="content" class="containertop">
+<main style="display:none"><!--for debug-->
+	<div id="mosaic">mosaic</div>
+</main>
 <!-- 	<div><ul class='ul_talk' style="padding:0; margin:0"><li class='tbox' ><div><span class='head'><img src='img/1.jpg'></span></div><div><span class='arrow'><svg><path d='M50 0 L5 19 L4 20 L5 21 L50 40 Z' stroke-width='1' stroke='#FFFFFF' fill='#FFFFFF'></path></svg></span></div><div>
 		<article class='content' style='border-radius:5px;box-shadow: -1px 4px 2px -3px #999999; margin-bottom: 0px;'>事情是一样的嘛</article></div></li></ul>
 	</div>
@@ -222,24 +220,21 @@ function send_picture() {
 <div class="col-xs-9" style="padding:0px; margin:0; padding-left:8px; padding-right:0px">
 	<input id="input-pj-text" name="pj_text" class="form-control input-lg"  required="required"    style="border-radius:3px;height:40px; border:none; border-bottom:#E6E6E6 1px solid; font-size:18px"><!-- onBlur="javascript:$('#st-footer-bar').show();$('#wyh').show();$('#pjtext').hide();"  -->
 </div>
-<div id="mosaic"></div>
 
 
-<div class="col-xs-2" style="padding:0; margin:0; line-height:35px">
+<!--div class="col-xs-2" style="padding:0; margin:0; line-height:35px">
 	<a onclick="sendMessage()"  class="btn btn-lg btn-primary" style="border-color:#999999;  border-radius:2px;border-width:0px; opacity:1; height:35px; width:83%; padding:7px; background:#33CC33;" id="doPingjia">
 		<span style="color:#FFFFFF; font-size:15PX;" >发送</span>
 	</a>
-</div>
+</div-->
 <div class="col-xs-2" style="padding:0; margin:0; line-height:35px">
 	<a onclick="send_picture()"  class="btn btn-lg btn-primary" style="border-color:#999999;  border-radius:2px;border-width:0px; opacity:1; height:35px; width:83%; padding:7px; background:#33CC33;" id="doPingjia">
-		<span style="color:#FFFFFF; font-size:15PX;" >发送picture</span>
+		<span style="color:#FFFFFF; font-size:15PX;" >发送</span>
 	</a>
 </div>
-
 
 </form>
 </div>
 <!--<div style="height:200px"></div>fa fa-smile-o-->
 </footer>
-
 </html>
