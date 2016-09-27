@@ -107,7 +107,7 @@ if( request.getSession().getAttribute("user_id")==null ){
 			</span>
 			<span class="pull-right" style="padding-top:5px; color:#CCCCCC; font-size:12px"><!--早上11:56--></span>
 			<br>
-			<div style="width:100%;padding-top:10px; color:#999999; padding-left:5px; font-size:14px" class="text-left"><input type="button" onclick="login();"  value="登录"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="register.jsp" >注册</a>
+			<div style="width:100%;padding-top:10px; color:#999999; padding-left:5px; font-size:14px" class="text-left"><input type="button" onclick="login();"  value="登录"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="register.jsp" >去注册</a>
 				<span class="pull-right">&nbsp;</span>
 			</div>	
 		</div>
