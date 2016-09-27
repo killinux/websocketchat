@@ -28,9 +28,9 @@ ul li {
 </style>
 <script src="js/jquery-1.11.0.min.js"></script>
 
-<script src="../gitwall/libs/gumhelper.js" type="text/javascript"></script>
-<script src="../gitwall/libs/Animated_GIF.js" type="text/javascript"></script>
-<script src="../gitwall/videoShooter.js" type="text/javascript"></script>
+<script src="libs/gumhelper.js" type="text/javascript"></script>
+<script src="libs/Animated_GIF.js" type="text/javascript"></script>
+<script src="videoShooter.js" type="text/javascript"></script>
 
 <%
 String uid=request.getParameter("uid");
@@ -62,7 +62,7 @@ String.prototype.startWith=function(s){
 }
 function startServer() {
 	console.log("enviroment:"+navigator.userAgent);
-	var url ="wss://192.168.8.61:8443/hao/msg";
+	var url ="wss://192.168.8.61:8443/websocketchat/hao/msg";
 	//if https ,websocket is wss
 	//var url ="ws://192.168.8.61:8443/hao/msg";
 	if ('WebSocket' in window) {
