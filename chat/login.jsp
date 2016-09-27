@@ -173,7 +173,7 @@ if( request.getSession().getAttribute("user_id")==null ){
 	<li class="col-xs-6">
 		<a  onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');"  href='register.jsp' style="color:#999999;" id="msgl">
 			<i class="gi gi-parents" style="font-size:30px"></i>
-			<div class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;">注册</div>
+			<div class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;">去注册</div>
 		</a>
 	</li>
 </ul>

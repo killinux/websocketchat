@@ -146,7 +146,7 @@ if( request.getSession().getAttribute("user_id")==null ){
 			</span>
 			<span class="pull-right" style="padding-top:5px; color:#CCCCCC; font-size:12px"><!--早上11:56--></span>
 			<br>
-			<div style="width:100%;padding-top:10px; color:#999999; padding-left:5px; font-size:14px" class="text-left">亲爱的<%=request.getSession().getAttribute("nickname")%>,您已经登录啦！&nbsp;&nbsp;<a href="logout.jsp?r=r">退出登陆，再注册一个账号</a>
+			<div style="width:100%;padding-top:10px; color:#999999; padding-left:5px; font-size:14px" class="text-left">欢迎<%=request.getSession().getAttribute("nickname")%>,<a href="index.jsp">去聊天</a>。&nbsp;&nbsp;<a href="logout.jsp?r=r">退出登陆，再注册一个</a>
 				<span class="pull-right">&nbsp;</span>
 			</div>	
 		</div>
