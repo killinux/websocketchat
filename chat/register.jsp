@@ -89,7 +89,7 @@ if( request.getSession().getAttribute("user_id")==null ){
 			</span>
 			<span class="pull-right" style="padding-top:5px; color:#CCCCCC; font-size:12px"><!--早上11:56--></span>
 			<br>
-			<div style="width:100%;padding-top:10px; color:#999999; padding-left:5px; font-size:14px" class="text-left"><input type="text" id="name" />
+			<div style="width:100%;padding-top:10px; color:#999999; padding-left:5px; font-size:14px" class="text-left"><input type="text" id="nickname" />
 				<span class="pull-right">&nbsp;</span>
 			</div>	
 		</div>
@@ -198,12 +198,12 @@ if( request.getSession().getAttribute("user_id")==null ){
 <script type="text/javascript" >
 function mytest(){
 	var user_name =document.getElementById("user_name").value;
-	var name =document.getElementById("name").value;
+	var nickname =document.getElementById("nickname").value;
 	var user_password=$("#user_password").val();
 	console.log(user_name+"  "+user_password);
 	$.ajax({
 	     type: 'POST',
-	     url: "doregister.jsp?u="+user_name+"&p="+user_password+"&n="+name,
+	     url: "doregister.jsp?u="+user_name+"&p="+user_password+"&n="+nickname,
  	     success: function(result){
  	     	 console.log(result);
 	 	     if(result=='err'){

@@ -207,7 +207,7 @@ if( request.getSession().getAttribute("user_id")==null ){
 		success: function(result){
  	     	 console.log("result:"+result);
 	 	     if(result=='err'){
-	 	     	alert("用户名已经被注册啦！");
+	 	     	alert("用户名或昵称已经被注册啦！");
 		 	 }else{
 		 	 	//alert("登录成功");
 		 	 	window.location.href="login.jsp";

@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.sql.*,java.util.*,net.sf.json.JSONArray,com.hao.object.User" contentType="text/html; charset=GBK" %>
 <%
 String RL = "jdbc:mysql://192.168.8.61:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
-String u=request.getParameter("u");
+String username=request.getParameter("u");
 String p=request.getParameter("p");
-String name=request.getParameter("n");
-String sqlStr = "insert into users(username,nickname,img_url,passwd,other) values('"+name+"','"+u+"','00.jpg','"+p+"','我觉得可以啊！下次有机会我...')";
+String nickname=request.getParameter("n");
+String sqlStr = "insert into users(username,nickname,img_url,passwd,other,onlinekey) values('"+username+"','"+nickname+"','00.jpg','"+p+"','我觉得可以啊！下次有机会我...',1)";
 try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(RL);
@@ -17,8 +17,8 @@ try {
 		        Long id = rs.getLong(1);   
 		        out.println(id);   
 		        request.getSession().setAttribute("user_id",id); 
-		        request.getSession().setAttribute("username",u);
-		        request.getSession().setAttribute("nickname",name);
+		        request.getSession().setAttribute("username",username);
+		        request.getSession().setAttribute("nickname",nickname);
 			}else{
 				out.println("error");
 			}
