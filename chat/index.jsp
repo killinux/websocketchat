@@ -63,7 +63,8 @@ if("null".equals(uid) ){
 }
 //String sqlStr = "select * from users where id in (select fid from friend where uid='"+uid+"');";
 //String sqlStr = "select * from users where id in (select fid from friend where uid='"+1+"');";
-String sqlStr = "select * from users u,friend f where f.uid="+1+" and u.id=f.fid";
+//String sqlStr = "select * from users u,friend f where f.uid="+1+" and u.id=f.fid";
+String sqlStr = "select * from users u,friend f where f.uid="+uid+" and u.id=f.fid";
 try {
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection con = DriverManager.getConnection(RL);

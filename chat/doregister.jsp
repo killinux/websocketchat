@@ -11,14 +11,18 @@ try {
 			//Statement st = con.createStatement();
 			PreparedStatement st = conn.prepareStatement(sqlStr, Statement.RETURN_GENERATED_KEYS);  
 			int result = st.executeUpdate();
-
+			
 			ResultSet rs = st.getGeneratedKeys();  
 			 if (rs.next()) {  
 		        Long id = rs.getLong(1);   
+		        String friend_sql = "insert into friend values('"+id+"',1)";
+		        PreparedStatement friend_st = conn.prepareStatement(friend_sql); 
+		        int friend_result = friend_st.executeUpdate();
 		        out.println(id);   
 		        request.getSession().setAttribute("user_id",id); 
 		        request.getSession().setAttribute("username",username);
 		        request.getSession().setAttribute("nickname",nickname);
+		        
 			}else{
 				out.println("error");
 			}
