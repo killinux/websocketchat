@@ -2,6 +2,7 @@
 websocket html5 chat
 #
 http://www.uedsc.com/webcam-animated-gif.html
+#
 https://davidwalsh.name/webcam-animated-gif
 #
 实现这个方法使用了rtcamera的这两个库： gumHelper and Animated_GIF
