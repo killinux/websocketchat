@@ -196,6 +196,13 @@ function send_picture() {
 	}
 
 }
+function keydownEvent() {
+    var e = window.event || arguments.callee.caller.arguments[0];
+	if (e && e.keyCode == 13 ) {
+		//alert("您按回车键了");
+        send_picture();
+	}
+}
 </script>
 </head>
 <body onload="startServer()" style=" background:#E6E6E6; margin:0; padding:0; padding-bottom:55px; ">
@@ -215,10 +222,10 @@ function send_picture() {
 
 <footer class="navbar navbar-default navbar-fixed-bottom text-center slideUp" style=" line-height:40px; color:#EBEBEB; font-size:16px;border:none; opacity:1; display:block; border-top:#E6E6E6 1px solid; background:#FFFFFF" id="pjtext" >
 <div  style="padding-top:4px;">
-<form id="form_pj">
+<!--form id="form_pj"-->
 <div class="col-xs-1" style="padding:0px; margin:0; padding-left:5px; color:#B9B9B9"><i class="fa fa-smile-o" style=" font-size:2.1em; padding-top:5px;"></i></div>
 <div class="col-xs-9" style="padding:0px; margin:0; padding-left:8px; padding-right:0px">
-	<input id="input-pj-text" name="pj_text" class="form-control input-lg"  required="required"    style="border-radius:3px;height:40px; border:none; border-bottom:#E6E6E6 1px solid; font-size:18px"><!-- onBlur="javascript:$('#st-footer-bar').show();$('#wyh').show();$('#pjtext').hide();"  -->
+	<input id="input-pj-text" onkeydown="keydownEvent()" name="pj_text" class="form-control input-lg"  required="required"    style="border-radius:3px;height:40px; border:none; border-bottom:#E6E6E6 1px solid; font-size:18px" ><!-- onBlur="javascript:$('#st-footer-bar').show();$('#wyh').show();$('#pjtext').hide();"  -->
 </div>
 
 
@@ -228,12 +235,12 @@ function send_picture() {
 	</a>
 </div-->
 <div class="col-xs-2" style="padding:0; margin:0; line-height:35px">
-	<a onclick="send_picture()"  class="btn btn-lg btn-primary" style="border-color:#999999;  border-radius:2px;border-width:0px; opacity:1; height:35px; width:83%; padding:7px; background:#33CC33;" id="doPingjia">
+	<a onclick="send_picture()"  class="btn btn-lg btn-primary" style="border-color:#999999;  border-radius:2px;border-width:0px; opacity:1; height:35px; width:83%; padding:7px; background:#33CC33;" id="send_message_button">
 		<span style="color:#FFFFFF; font-size:15PX;" >发送</span>
 	</a>
 </div>
 
-</form>
+<!--/form-->
 </div>
 <!--<div style="height:200px"></div>fa fa-smile-o-->
 </footer>
