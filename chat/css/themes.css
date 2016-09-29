@@ -430,8 +430,8 @@ body > div {
         }
 
         .ul_talk.reply li .arrow {
-            margin: 0 1px 0 -4px;
-            height: 45px;
+          /*  margin: 0 1px 0 -4px;*/
+            height: 30px;
         }
 
     .ul_talk.reply .content {
