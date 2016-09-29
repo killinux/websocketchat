@@ -83,7 +83,12 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 		}
 		@Override
 		protected void onTextMessage(CharBuffer message) throws IOException {
-			System.out.println("onText---> onTextMessage");
+			try {//print messages not gif
+				String[] messages=message.toString().split("#");
+				String log_message=messages[0]+" say to "+messages[1]+":"+messages[2];
+				System.out.println("onText---> onTextMessage:"+log_message.toString());
+			} catch (Exception e) {
+			}
 			String[] msgarray= message.toString().split(",");
 			for (Map.Entry<String, MyMessageInbound> entry : mmiList.entrySet()) {
 				  //System.out.println(entry.getKey()+"-----");
@@ -124,7 +129,10 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 	}
 
 	public static void main(String[] args) {
-		Socket socket;
+		
+		
+		
+		/*Socket socket;
 		String message = "haoning";
 		String msg = "";
 		try {
@@ -147,6 +155,6 @@ public class HelloWorldWebSocketServlet extends WebSocketServlet {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
