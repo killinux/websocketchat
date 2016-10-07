@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.sql.*,java.util.*,net.sf.json.JSONArray,com.hao.object.User" contentType="text/html; charset=GBK" %>
 <%
-String RL = "jdbc:mysql://192.168.8.61:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
+String RL = "jdbc:mysql://killinux.com:3306/haochat?useUnicode=true&characterEncoding=utf-8&user=root&password=haoning";
 String username=request.getParameter("u");
 String p=request.getParameter("p");
 String nickname=request.getParameter("n");

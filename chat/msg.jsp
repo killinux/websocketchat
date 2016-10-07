@@ -62,9 +62,14 @@ String.prototype.startWith=function(s){
 }
 function startServer() {
 	console.log("enviroment:"+navigator.userAgent);
-	var url ="wss://192.168.8.61:8443/websocketchat/hao/msg";
+	var url ="ws://killinux.com:8443/websocketchat/hao/msg";
+    if(window.location.href.split(":")[0]=="https"){
+        url="wss://killinux.com:8443/websocketchat/hao/msg";
+    }else{
+        url="ws://killinux.com:8080/websocketchat/hao/msg";
+    }
 	//if https ,websocket is wss
-	//var url ="ws://192.168.8.61:8443/hao/msg";
+	//var url ="ws://killinux.com:8443/hao/msg";
 	if ('WebSocket' in window) {
 		ws = new WebSocket(url);
 	} else if ('MozWebSocket' in window) {
@@ -83,16 +88,16 @@ function startServer() {
 		//	document.getElementById("username").value=thisdata.split(" ")[1];
 		}else{
 			var showData=event.data.split("#");
-			log(showData[0]+" say:"+showData[2]);
+			//log(showData[0]+" say:"+showData[2]);
 			if(showData[1]==yourname){
-				console.log("right");
+				//console.log("right");
 				if(showData[3]==undefined||""==showData[3]){
 					$("#content").append("<div><ul class='ul_talk reply'><li class='tbox' ><div><span class='head' style=''><img src='img/"+myname+".jpg'></span></div><div><span ><svg class='arrow'><path d='M0 10 L20 19 L21 12 L20 14 L0 20 Z' stroke-width='1' stroke='#7EBE2A' fill='#7EBE2A'></path></svg></span></div><div><article class='content'  style='border-radius:5px;box-shadow:  -1px 4px 2px -3px #999999; '>"+showData[2]+"</article></div></li></ul></div>"); 
 				}else{ 
 					$("#content").append("<div><ul class='ul_talk reply'><li class='tbox' ><div><span class='head' style=''><img src='"+showData[3]+"'></span></div><div><span ><svg class='arrow'><path d='M0 10 L20 19 L21 12 L20 14 L0 20 Z' stroke-width='1' stroke='#7EBE2A' fill='#7EBE2A'></path></svg></span></div><div><article class='content'  style='border-radius:5px;box-shadow:  -1px 4px 2px -3px #999999; '>"+showData[2]+"</article></div></li></ul></div>");  
 				}
 			}else{
-				console.log("left");
+				//console.log("left");
 				if(showData[3]==undefined||""==showData[3]){
 				$("#content").append("<div><ul class='ul_talk' style='padding:0; margin:0'><li class='tbox' ><div><span class='head'><img src='img/"+yourname+".jpg'></span></div><div><span class='arrow'><svg><path d='M50 0 L5 19 L4 20 L5 21 L50 40 Z' stroke-width='1' stroke='#FFFFFF' fill='#FFFFFF'></path></svg></span></div><div><article class='content' style='border-radius:5px;box-shadow: -1px 4px 2px -3px #999999; margin-bottom: 0px;'>"+showData[2]+"</article></div></li></ul></div>");
 				}else{ 
