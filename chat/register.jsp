@@ -162,35 +162,36 @@ if( request.getSession().getAttribute("user_id")==null ){
 <div class="row" style=" padding-left:15px; padding-right:10px">
 <ul class="nav navbar-nav-custom col-xs-6 text-center pull-left">
 	<li class="col-xs-6">
-		<a  style="color:#999999;" href="index.jsp?uid=1" id="faxian"><!-- onclick="javascript:$(this).css('color','#33CC00');"-->
+		<a onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');"  href="index.jsp" style="color:#999999;" id="fchat">
 			<!--未读红点-->
 			<span  style="background:#FF0000; position:absolute;left:38px; top:7px; width:10px; height:10px; border-radius:5px; display:block" id="footer_qipao"></span>
 			<i class="gi gi-chat" style="font-size:30px;"></i>
-			<div class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;">通讯录</div>
+			<div class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;">微信</div>
 		</a>
 	</li>
 	<li class="col-xs-6">
-		<a  onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');"  href='register.jsp' style="color:#33CC00;" id="msgl">
+		<a onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');"  href='users.jsp' style="color:#999999;" id="users">
 			<i class="gi gi-parents" style="font-size:30px"></i>
-			<div class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;">注册</div>
+			<div class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;">通讯录</div>
 		</a>
 	</li>
 </ul>
 <ul class="nav navbar-nav-custom pull-right col-xs-6 text-center" >
 	<li class="col-xs-6">
-		<a   style="color:#999999;" id="openclass"><!--onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');"-->
-			<i class="gi gi-compass" style="font-size:30px"></i>
+		<a onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');"  href='faxian.jsp' style="color:#999999;"  id="discover">
+			<i class="gi gi-compass" style="font-size:30px;"></i>
 			<div  class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;" >发现</div>
 		</a>
 	</li>
 	<li class="col-xs-6">
-		<a href="login.jsp" style="color:#999999;" id="index"><!--onClick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar ').css('color','#FFFFFF');"-->
-		<i class="gi gi-user" style="font-size:30px"></i>
-		<div class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;" >登录</div></a>
+		<a onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar ').css('color','#FFFFFF');"  style="color:#33CC00;" id="myself">
+			<i class="gi gi-user" style="font-size:30px"></i>
+			<div class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;" >我</div>
+		</a>
 	</li>
 </ul>
 </div>
-</footer>  
+</footer> 
 </div>   
    
  <!--PROUI   JS  库   不用更改-->

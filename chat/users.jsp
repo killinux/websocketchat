@@ -40,7 +40,7 @@
 		</div>    
 		<div class="col-xs-10">
 			<span class="pull-left" style="padding-left:5px; font-size:16px; color:#000000">
-				<b>订阅号</b>
+				<b>search</b>
 				<font style="font-size:12px; color:#CCCCCC"></font>
 			</span>
 			<span class="pull-right" style="padding-top:5px; color:#CCCCCC; font-size:12px">早上11:56</span>
@@ -120,7 +120,7 @@ try {
 <div class="row" style=" padding-left:15px; padding-right:10px">
 <ul class="nav navbar-nav-custom col-xs-6 text-center pull-left">
 	<li class="col-xs-6">
-		<a onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');" style="color:#33CC00;" id="fchat">
+		<a onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');"  href="index.jsp" style="color:#999999;" id="fchat">
 			<!--未读红点-->
 			<span  style="background:#FF0000; position:absolute;left:38px; top:7px; width:10px; height:10px; border-radius:5px; display:block" id="footer_qipao"></span>
 			<i class="gi gi-chat" style="font-size:30px;"></i>
@@ -128,7 +128,7 @@ try {
 		</a>
 	</li>
 	<li class="col-xs-6">
-		<a onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');"  href='users.jsp' style="color:#999999;" id="users">
+		<a onclick="javascript:$(this).css('color','#33CC00');$('#st-footer-bar').css('color','#FFFFFF');"   style="color:#33CC00;" id="users">
 			<i class="gi gi-parents" style="font-size:30px"></i>
 			<div class="text-center" style=" line-height:18px; padding-bottom:25px;font-size:12px;">通讯录</div>
 		</a>
