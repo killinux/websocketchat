@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.sql.*,java.util.*,net.sf.json.JSONArray,com.hao.object.User" contentType="text/html; charset=GBK" %>
+<%@ page language="java" import="java.sql.*,java.util.*,net.sf.json.JSONArray,com.hao.object.User" contentType="text/html; charset=utf-8" %>
 <%
 //mysql -uroot --default-character-set=utf8 -hkillinux.com -p
 /*

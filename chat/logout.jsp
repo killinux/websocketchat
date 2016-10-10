@@ -1,4 +1,4 @@
-<%@ page language="java"  contentType="text/html; charset=GBK" %>
+<%@ page language="java"  contentType="text/html; charset=utf-8" %>
 <%
 String registpage=request.getParameter("r");
 request.getSession().removeAttribute("user_id"); 

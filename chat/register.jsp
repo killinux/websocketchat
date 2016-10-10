@@ -204,7 +204,9 @@ function mytest(){
 	console.log(user_name+"  "+user_password);
 	$.ajax({
 	     type: 'POST',
-	     url: "doregister.jsp?u="+user_name+"&p="+user_password+"&n="+nickname,
+	     //url: "doregister.jsp?u="+user_name+"&p="+user_password+"&n="+nickname,
+	     url: "doregister.jsp",
+	     data:{u:user_name,p:user_password,n:nickname},
  	     success: function(result){
  	     	 console.log(result);
 	 	     if(result=='err'){
