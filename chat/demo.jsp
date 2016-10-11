@@ -30,10 +30,11 @@
 <!--没有内容的时候END-->
 <div class="row" style="padding-top:8px" id="msgl">  
 <!--列表循环开始-->
-<!--div class="col-xs-12" style="padding-bottom:8px;">  
+<div class="col-xs-12" style="padding-bottom:8px;">  
 	<a href="msg.html?uid=zhy"> 
 		<div class="col-xs-2">
 			<img src="img/6.jpg" class="widget-image image-circle" style="width:50px;height:50px; border-radius:0px">
+		    <!--新消息气泡-->
 		    <span  style="background:#FF0000; position:absolute;left:59px; top:-2px; width:10px; height:10px; border-radius:5px;"></span>
 		</div>    
 		<div class="col-xs-10">
@@ -48,22 +49,10 @@
 			</div>	
 		</div>
 	</a>
-</div-->
+</div>
 <!--列表循环end-->
 </div>  
-<script type="text/javascript" >
-alert(window.innerWidth);
-alert(window.devicePixelRatio);
-function changeFrameHeight(){
-    var ifm= document.getElementById("iframepage"); 
-    //ifm.height=document.documentElement.clientHeight;
-    ifm.width=document.documentElement.clientWidth;
-}
-window.onresize=function(){  
-     changeFrameHeight();  
-} 
-</script>
-<iframe  id="iframepage" src="/jslinux-bellard/kb.html"  scrolling="no" onload="changeFrameHeight()" frameborder="0"></iframe>	
+<iframe src="/jslinux-bellard/kb.html"></iframe>	
 	
 <footer class="navbar navbar-default navbar-fixed-bottom slideUp" role="navigation" style="  background-color:FEFFFF;border-top:#E6E6E6 1px solid; opacity:0.9; line-height:55px;  height:55px;  z-index:1; padding-top:0px;" id="st-footer-bar">
 <div class="row" style=" padding-left:15px; padding-right:10px">
